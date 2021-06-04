@@ -1,27 +1,53 @@
+
+
 var salvarDados = function(){
-  var nome = window.document.querySelector("input#name").value
-  var atributoAparencia = window.document.getElementById("atributo.Aparência").value
-  console.log(nome)
-  console.log(atributoAparencia)
-  localStorage.setItem('nome', nome)
-  localStorage.setItem('aparencia', atributoAparencia)
+
+  var data_armazenamento = {
+    nome: window.document.querySelector("input#name").value,
+    jogador: window.document.querySelector("input#player").value,
+    occupation: window.document.querySelector("input#occupation").value,
+    age: window.document.querySelector("input#age").value,
+    birthplace: window.document.querySelector("input#birthplace").value,
+    residence: window.document.querySelector("input#residence").value,
+
+    
+    life: {
+      current: window.document.querySelector("input#lifeCurrent").value,
+      max: window.document.querySelector("input#lifeMax").value,
+    },
+    sanity: {
+      current: window.document.querySelector("input#sanityCurrent").value,
+      max: window.document.querySelector("input#sanityMax").value, 
+  }}
+
+  var atribute_armazenamento = {
+    aparencia: {
+      type: 'Aparência',
+      amount:  window.document.getElementById("atributo.Aparência").value,
+    }
+  }
+
+  localStorage.setItem('data', JSON.stringify(data_armazenamento));
+  localStorage.setItem('atributos', JSON.stringify(atribute_armazenamento));
 
 }
+document.onchange = salvarDados;
 
-
+var retrievedObject = localStorage.getItem('data')
+var retrievdAtributes = localStorage.getItem('atributos')
 
 const data = {
-  name: localStorage.nome,
-  player: '',
-  occupation: '',
-  age: 0,
-  sex: '',
-  birthplace: '',
-  residence: '',
+  name: JSON.parse(retrievedObject).nome,
+  player: JSON.parse(retrievedObject).nome,
+  occupation: JSON.parse(retrievedObject).occupation,
+  age: JSON.parse(retrievedObject).age,
+  sex: JSON.parse(retrievedObject).sex,
+  birthplace: JSON.parse(retrievedObject).birthplace,
+  residence: JSON.parse(retrievedObject).residence,
 
   life: {
-    current: 12,
-    max: 12,
+    current: JSON.parse(retrievedObject).life.current,
+    max: JSON.parse(retrievedObject).life.max,
   },
   sanity: {
     current: 62,
@@ -55,7 +81,7 @@ const data = {
   attributes: [
     {
       type: 'Aparência',
-      amount:  localStorage.aparencia,
+      amount: parseInt(JSON.parse(retrievdAtributes).aparencia.amount),
     },
     {
       type: 'Constituição',
@@ -413,13 +439,10 @@ function addAttribute(attribute, id) {
   $('#attributesList').append(newAttribute)
 }
 
+document.onchange = salvarDados;
 
 
 
-
-
-document.onchange = salvarDados
-atualizarDados()
 
 
 

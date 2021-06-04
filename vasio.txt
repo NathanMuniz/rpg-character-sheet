@@ -1,0 +1,14 @@
+    //occupation: window.document.querySelector("input#occupation").value,
+    //age: window.document.querySelector("input#age").value,
+    //sex: window.document.querySelector("input#sex").value,
+    //birthplace: window.document.querySelector("input#birthplace").value,
+    //residence: window.document.querySelector("input#residence").value,
+
+    /*
+    life: {
+      current: window.document.querySelector("input#current").value,
+      max: window.document.querySelector("input#max").value,
+    },
+    sanity: {
+      current: 62,
+      max: 62,*/
