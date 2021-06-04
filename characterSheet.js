@@ -1,11 +1,11 @@
 const data = {
-  name: 'Claudio',
-  player: 'Ryan',
-  occupation: 'Caçador',
-  age: 21,
-  sex: 'male',
-  birthplace: 'São paulo',
-  residence: 'São paulo',
+  name: '',
+  player: '',
+  occupation: '',
+  age: 0,
+  sex: '',
+  birthplace: '',
+  residence: '',
 
   life: {
     current: 12,
@@ -397,4 +397,21 @@ function addAttribute(attribute, id) {
   </div>`)
   $('#attributesList').append(newAttribute)
 }
+
+
+var salvarDados = function(){
+  var nome = window.document.querySelector("input#name").value
+  console.log(nome)
+  localStorage.setItem('nome', nome)
+}
+
+function atualizarDados(){
+  var nome = window.document.querySelector("input#name").value = localStorage.nome
+}
+
+
+document.onchange = salvarDados
+atualizarDados()
+
+
 
