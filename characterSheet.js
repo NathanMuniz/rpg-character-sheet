@@ -1,5 +1,17 @@
+var salvarDados = function(){
+  var nome = window.document.querySelector("input#name").value
+  var atributoAparencia = window.document.getElementById("atributo.Aparência").value
+  console.log(nome)
+  console.log(atributoAparencia)
+  localStorage.setItem('nome', nome)
+  localStorage.setItem('aparencia', atributoAparencia)
+
+}
+
+
+
 const data = {
-  name: '',
+  name: localStorage.nome,
   player: '',
   occupation: '',
   age: 0,
@@ -43,7 +55,7 @@ const data = {
   attributes: [
     {
       type: 'Aparência',
-      amount: 10,
+      amount:  localStorage.aparencia,
     },
     {
       type: 'Constituição',
@@ -298,6 +310,9 @@ function calculateBar(current, max) {
 function calcDice(ability, dice) {
   // Não encontrei uma forma mais fácil, então fiz assim
 
+  
+
+
   const table = [
     { normal: 20 },
     { normal: 19, good: 20 },
@@ -336,7 +351,7 @@ function calcDice(ability, dice) {
     if (dice >= type.normal) return 'Sucesso Normal'
     if (dice <= type.normal) return 'Fracasso'
   }
-}
+} 
 
 function rollDice(dice) {
   let [count, max] = dice.split('d')
@@ -389,25 +404,18 @@ function addWeaponToTable(weapon, id) {
 
 function addAttribute(attribute, id) {
   const newAttribute = $(`<div class="attribute" id="attribute_${id}">
-    <a onclick="rollAtribute('${attribute.type}', ${attribute.amount})">
+    <a onclick="rollAtribute('estranho', ${attribute.amount})">
       <img class="attributeDice" src="./img/dado.png" alt="Dado">
     </a>
     <h3>${attribute.type}</h3>
-    <input type="text" name="appearance" value="${attribute.amount}" id="attribute_input_${id}" disabled>
+    <input type="number" name="appearance" value="${attribute.amount}" valor="${attribute.amount}" id="atributo.${attribute.type}">
   </div>`)
   $('#attributesList').append(newAttribute)
 }
 
 
-var salvarDados = function(){
-  var nome = window.document.querySelector("input#name").value
-  console.log(nome)
-  localStorage.setItem('nome', nome)
-}
 
-function atualizarDados(){
-  var nome = window.document.querySelector("input#name").value = localStorage.nome
-}
+
 
 
 document.onchange = salvarDados
