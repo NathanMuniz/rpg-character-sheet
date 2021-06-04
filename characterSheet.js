@@ -398,6 +398,3 @@ function addAttribute(attribute, id) {
   $('#attributesList').append(newAttribute)
 }
 
-function deleteWeapon(id) {
-  $(`tr#${id}`).remove()
-}
