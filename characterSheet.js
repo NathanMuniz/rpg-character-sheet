@@ -1,5 +1,4 @@
 
-
 var salvarDados = function(){
 
   var data_armazenamento = {
@@ -19,22 +18,26 @@ var salvarDados = function(){
       current: window.document.querySelector("input#sanityCurrent").value,
       max: window.document.querySelector("input#sanityMax").value, 
   }}
-
+/*
   var atribute_armazenamento = {
     aparencia: {
       type: 'Aparência',
-      amount:  window.document.getElementById("atributo.Aparência").value,
+      amount: window.document.getElementById("atributo.Aparência").value,
     }
-  }
+  }*/
 
   localStorage.setItem('data', JSON.stringify(data_armazenamento));
-  localStorage.setItem('atributos', JSON.stringify(atribute_armazenamento));
+  /*localStorage.setItem('atributos', JSON.stringify(atribute_armazenamento));*/
 
 }
+
 document.onchange = salvarDados;
 
 var retrievedObject = localStorage.getItem('data')
 var retrievdAtributes = localStorage.getItem('atributos')
+
+
+
 
 const data = {
   name: JSON.parse(retrievedObject).nome,
@@ -77,11 +80,12 @@ const data = {
       defect: 1,
       area: '',
     },
-  ],
+  ],/* amount: JSON.parse(retrievdAtributes).aparencia.amount*/
+
   attributes: [
     {
       type: 'Aparência',
-      amount: parseInt(JSON.parse(retrievdAtributes).aparencia.amount),
+      amount: 10,
     },
     {
       type: 'Constituição',
@@ -408,6 +412,7 @@ function closeModal(modal) {
   Modal.css('display', 'none')
 }
 
+
 function addWeaponToTable(weapon, id) {
   const newWeapon = $(`<tr id="weapon_${id}">
         <td>
@@ -428,16 +433,20 @@ function addWeaponToTable(weapon, id) {
   $('table#weapons').append(newWeapon)
 }
 
+
 function addAttribute(attribute, id) {
   const newAttribute = $(`<div class="attribute" id="attribute_${id}">
     <a onclick="rollAtribute('estranho', ${attribute.amount})">
       <img class="attributeDice" src="./img/dado.png" alt="Dado">
     </a>
     <h3>${attribute.type}</h3>
-    <input type="number" name="appearance" value="${attribute.amount}" valor="${attribute.amount}" id="atributo.${attribute.type}">
+    <input type="text" name="appearance" value="${attribute.amount}" valor="${attribute.amount}" id="atributo.${attribute.type}">
   </div>`)
   $('#attributesList').append(newAttribute)
 }
+
+
+
 
 document.onchange = salvarDados;
 
