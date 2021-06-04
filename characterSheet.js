@@ -41,7 +41,7 @@ var retrievdAtributes = localStorage.getItem('atributos')
 
 const data = {
   name: JSON.parse(retrievedObject).nome,
-  player: JSON.parse(retrievedObject).nome,
+  player: JSON.parse(retrievedObject).jogador,
   occupation: JSON.parse(retrievedObject).occupation,
   age: JSON.parse(retrievedObject).age,
   sex: JSON.parse(retrievedObject).sex,
