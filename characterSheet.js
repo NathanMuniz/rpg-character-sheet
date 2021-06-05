@@ -495,8 +495,8 @@ function addPericia(){
   let periciatext = document.getElementById("periciatexto").value
   let pericianum = document.getElementById("pericianum").value
   const newPericia = $(`<div class="pericia"  id="attribute_${periciatext}">
-  <h3>${periciatext}</h3>
-  <p>${periciatext} -> ${pericianum}</p>
+  <h3 style="text-aling: center;">${periciatext}</h3>
+  <p >${pericianum}</p>
   <br>
   </div>`)
   $('#listaAdd').append(newPericia)
@@ -524,8 +524,8 @@ function carregarPericia(){
       let periciatext = JSON.parse(retrievdPericias).pericia
       let pericianum = parseInt(JSON.parse(retrievdPericias).valor)
       const newPericia = $(`<div class="pericia" id="attribute_${periciatext}">
-      <h3>${periciatext}</h3>
-      <p>${pericianum}</p>
+      <h3 style="padding-left: 100px;">${periciatext}</h3>
+      <p style="text-align: center; padding-left: 100px">${pericianum}</p>
       <br>
       </div>`)
       $('#listaAdd').append(newPericia)
