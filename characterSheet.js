@@ -1,3 +1,12 @@
+attributes: [
+  {
+    type: 'Aparência',
+    amount: 10,
+  },
+  {
+    type: 'Constituição',
+    amount: 10,
+  }]
 
 var salvarDados = function(){
 
@@ -18,16 +27,20 @@ var salvarDados = function(){
       current: window.document.querySelector("input#sanityCurrent").value,
       max: window.document.querySelector("input#sanityMax").value, 
   }}
-/*
+
   var atribute_armazenamento = {
     aparencia: {
       type: 'Aparência',
       amount: window.document.getElementById("atributo.Aparência").value,
+    },
+    constituicao : {
+        type: 'Constituição',
+        amount: window.document.getElementById("atributo.Constituição").value,
     }
-  }*/
+  }
 
   localStorage.setItem('data', JSON.stringify(data_armazenamento));
-  /*localStorage.setItem('atributos', JSON.stringify(atribute_armazenamento));*/
+  localStorage.setItem('atributos', JSON.stringify(atribute_armazenamento));
 
 }
 
@@ -85,11 +98,11 @@ const data = {
   attributes: [
     {
       type: 'Aparência',
-      amount: 10,
+      amount: parseInt(JSON.parse(retrievdAtributes).aparencia.amount),
     },
     {
       type: 'Constituição',
-      amount: 10,
+      amount: parseInt(JSON.parse(retrievdAtributes).constituicao.amount),
     },
     {
       type: 'Destreza',
