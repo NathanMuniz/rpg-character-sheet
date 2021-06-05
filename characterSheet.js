@@ -9,7 +9,7 @@ attributes: [
   }]
 
 var salvarDados = function(){
-
+  // SALVAR DATA
   var data_armazenamento = {
     nome: window.document.querySelector("input#name").value,
     jogador: window.document.querySelector("input#player").value,
@@ -27,7 +27,7 @@ var salvarDados = function(){
       current: window.document.querySelector("input#sanityCurrent").value,
       max: window.document.querySelector("input#sanityMax").value, 
   }}
-
+  // SALVAR ATRIBUTOS 
   var atribute_armazenamento = {
     aparencia: {
       type: 'Aparência',
@@ -36,7 +36,39 @@ var salvarDados = function(){
     constituicao : {
         type: 'Constituição',
         amount: window.document.getElementById("atributo.Constituição").value,
-    }
+    },
+    destresa : {
+      type: 'Destreza',
+      amount: window.document.getElementById("atributo.Destreza").value,
+  },
+  educacao : {
+    type: 'Educação',
+    amount: window.document.getElementById("atributo.Educação").value,
+},
+forca : {
+  type: 'Força',
+  amount: window.document.getElementById("atributo.Força").value,
+},
+inteligencia : {
+  type: 'Inteligência',
+  amount: window.document.getElementById("atributo.Inteligência").value,
+},
+poder : {
+  type: 'Poder',
+  amount: window.document.getElementById("atributo.Poder").value,
+},
+sorte : {
+  type: 'Sorte',
+  amount: window.document.getElementById("atributo.Sorte").value,
+},
+movimento : {
+  type: 'Movimento',
+  amount: window.document.getElementById("atributo.Movimento").value,
+},
+enterro : {
+  type: '?',
+  amount: window.document.getElementById("atributo.?").value,
+},
   }
 
   localStorage.setItem('data', JSON.stringify(data_armazenamento));
@@ -106,35 +138,35 @@ const data = {
     },
     {
       type: 'Destreza',
-      amount: 10,
+      amount: parseInt(JSON.parse(retrievdAtributes).destresa.amount)
     },
     {
       type: 'Educação',
-      amount: 10,
-    },
+      amount: parseInt(JSON.parse(retrievdAtributes).educacao.amount)
+    },,
     {
       type: 'Força',
-      amount: 10,
+      amount: parseInt(JSON.parse(retrievdAtributes).forca.amount)
     },
     {
       type: 'Inteligência',
-      amount: 10,
+      amount: parseInt(JSON.parse(retrievdAtributes).inteligencia.amount)
     },
     {
       type: 'Poder',
-      amount: 10,
+      amount: parseInt(JSON.parse(retrievdAtributes).poder.amount)
     },
     {
       type: 'Sorte',
-      amount: 10,
+      amount: parseInt(JSON.parse(retrievdAtributes).sorte.amount)
     },
     {
       type: 'Movimento',
-      amount: 10,
+      amount: parseInt(JSON.parse(retrievdAtributes).movimento.amount)
     },
     {
       type: '?',
-      amount: 10,
+      amount: parseInt(JSON.parse(retrievdAtributes).enterro.amount)
     },
   ],
 }
