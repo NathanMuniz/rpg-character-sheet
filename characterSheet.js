@@ -494,9 +494,10 @@ function addAttribute(attribute, id) {
 function addPericia(){
   let periciatext = document.getElementById("periciatexto").value
   let pericianum = document.getElementById("pericianum").value
-  const newPericia = $(`<div class="pericia" id="attribute_${periciatext}">
+  const newPericia = $(`<div class="pericia"  id="attribute_${periciatext}">
   <h3>${periciatext}</h3>
   <p>${periciatext} -> ${pericianum}</p>
+  <br>
   </div>`)
   $('#listaAdd').append(newPericia)
 
@@ -524,7 +525,8 @@ function carregarPericia(){
       let pericianum = parseInt(JSON.parse(retrievdPericias).valor)
       const newPericia = $(`<div class="pericia" id="attribute_${periciatext}">
       <h3>${periciatext}</h3>
-      <p>${periciatext} -> ${pericianum}</p>
+      <p>${pericianum}</p>
+      <br>
       </div>`)
       $('#listaAdd').append(newPericia)
     }
