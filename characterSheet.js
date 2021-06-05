@@ -1,3 +1,5 @@
+document.onchange = salvarParagrafo()
+
 attributes: [
   {
     type: 'Aparência',
@@ -532,6 +534,34 @@ function carregarPericia(){
     }
   }
 }
+
+function salvarParagrafo(){
+  let pargrafos = {
+    p1 : window.document.getElementById("paragrafo.1").value,
+    p2 : window.document.getElementById("paragrafo.2").value,
+    p3 : window.document.getElementById("paragrafo.3").value,
+    p4 : window.document.getElementById("paragrafo.4").value,
+    p5 : window.document.getElementById("paragrafo.5").value,
+    p6 : window.document.getElementById("paragrafo.6").value,
+    p7 : window.document.getElementById("paragrafo.7").value,
+
+
+
+
+  }
+  localStorage.setItem('paragrafos', JSON.stringify(pargrafos))
+
+}
+
+function carregarParagrafo(){
+  var retrievdParagrafo = localStorage.getItem('paragrafos')
+  window.document.getElementById("paragrafo.1").value = JSON.parse(retrievdParagrafo).p1
+
+
+}
+
+document.onchange = carregarParagrafo()
+document.onchange = salvarParagrafo()
 document.onchange = carregarPericia()
 document.onchange = salvarDados;
 
