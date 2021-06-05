@@ -53,8 +53,8 @@ const data = {
     max: JSON.parse(retrievedObject).life.max,
   },
   sanity: {
-    current: 62,
-    max: 62,
+    current: JSON.parse(retrievedObject).sanity.current,
+    max: JSON.parse(retrievedObject).sanity.max,
   },
 
   weapons: [
