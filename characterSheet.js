@@ -65,7 +65,7 @@ movimento : {
   type: 'Movimento',
   amount: window.document.getElementById("atributo.Movimento").value,
 },
-enterro : {
+ enterro : {
   type: '?',
   amount: window.document.getElementById("atributo.?").value,
 },
@@ -491,8 +491,46 @@ function addAttribute(attribute, id) {
 }
 
 
+function addPericia(){
+  let periciatext = document.getElementById("periciatexto").value
+  let pericianum = document.getElementById("pericianum").value
+  const newPericia = $(`<div class="pericia" id="attribute_${periciatext}">
+  <h3>${periciatext}</h3>
+  <p>${periciatext} -> ${pericianum}</p>
+  </div>`)
+  $('#listaAdd').append(newPericia)
+
+  salvaPericia(periciatext, pericianum)
+
+}
+
+function salvaPericia(periciatext, pericianum){
+  var text = periciatext
+  var data_pericia = {
+    pericia: [periciatext],
+    valor: [pericianum]
+    }
+      
+  
+  localStorage.setItem(`pericia${text}`, JSON.stringify(data_pericia))
+}
 
 
+function carregarPericia(){
+  for(e in localStorage){
+    if(String(e)[0] == "p"){
+      var retrievdPericias = localStorage.getItem(`${e}`)
+      let periciatext = JSON.parse(retrievdPericias).pericia
+      let pericianum = parseInt(JSON.parse(retrievdPericias).valor)
+      const newPericia = $(`<div class="pericia" id="attribute_${periciatext}">
+      <h3>${periciatext}</h3>
+      <p>${periciatext} -> ${pericianum}</p>
+      </div>`)
+      $('#listaAdd').append(newPericia)
+    }
+  }
+}
+document.onchange = carregarPericia()
 document.onchange = salvarDados;
 
 
