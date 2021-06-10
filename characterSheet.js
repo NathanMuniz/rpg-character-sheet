@@ -496,27 +496,34 @@ function addAttribute(attribute, id) {
 function addPericia(){
   let periciatext = document.getElementById("periciatexto").value
   let pericianum = document.getElementById("pericianum").value
-  const newPericia = $(`<div class="pericia"  id="attribute_${periciatext}">
-  <h3 style="text-aling: center;">${periciatext}</h3>
-  <p >${pericianum}</p>
+  const newPericia = $(`<div class="attribute" id="attribute_${periciatext}">
+  <a onclick="rollAtribute('estranho', ${pericianum})">
+  <h3>${periciatext}</h3>
+  <a/>
+  <input id="input_${periciatext}" type="text" style="outline: 0; box-shadow: 0 0 0 0; border: 0 none; margin: 0px" value="${pericianum}"> 
+  <input type="button" id="delete_${periciatext}" style="outline: 0; box-shadow: 0 0 0 0; border: 0 none; margin-bottom: 20px; margin-top: 0px;"value="DELETE" onclick="removePericia(delete_${periciatext})"
   <br>
   </div>`)
   $('#listaAdd').append(newPericia)
 
   salvaPericia(periciatext, pericianum)
 
+  document.location.reload()
+
 }
 
-function salvaPericia(periciatext, pericianum){
+function salvaPericia(periciatext){
   var text = periciatext
+  var num = document.getElementById(`input_${periciatext}`).value
   var data_pericia = {
     pericia: [periciatext],
-    valor: [pericianum]
+    valor: [num]
     }
       
   
   localStorage.setItem(`pericia${text}`, JSON.stringify(data_pericia))
 }
+
 
 
 function carregarPericia(){
@@ -525,15 +532,19 @@ function carregarPericia(){
       var retrievdPericias = localStorage.getItem(`${e}`)
       let periciatext = JSON.parse(retrievdPericias).pericia
       let pericianum = parseInt(JSON.parse(retrievdPericias).valor)
-      const newPericia = $(`<div class="pericia" id="attribute_${periciatext}">
-      <h3 style="padding-left: 100px;">${periciatext}</h3>
-      <p style="text-align: center; padding-left: 100px">${pericianum}</p>
+      const newPericia = $(`<div class="attribute" id="attribute_${periciatext}">
+      <a onclick="rollAtribute('estranho', ${pericianum})">
+      <h3>${periciatext}</h3>
+      <a/>
+      <input id="input_${periciatext}" type="text" style="outline: 0; box-shadow: 0 0 0 0; border: 0 none; margin: 0px" value="${pericianum}"> 
+      <input type="button" name="${periciatext}"id="delete_${periciatext}" style="outline: 0; box-shadow: 0 0 0 0; border: 0 none; margin-bottom: 20px; margin-top: 0px;"value="DELETE" onclick="removePericia(delete_${periciatext})"
       <br>
       </div>`)
       $('#listaAdd').append(newPericia)
     }
   }
 }
+
 
 function salvarParagrafo(){
   let pargrafos = {
@@ -558,6 +569,13 @@ function carregarParagrafo(){
   window.document.getElementById("paragrafo.1").value = JSON.parse(retrievdParagrafo).p1
 
 
+}
+
+function removePericia(nome_pericia=" "){
+  nome = String(nome_pericia.name)
+  console.log(nome)
+  localStorage.removeItem(`pericia${nome}`)
+  document.location.reload()
 }
 
 document.onchange = carregarParagrafo()
