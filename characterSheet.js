@@ -537,7 +537,7 @@ function carregarPericia(){
       <h3>${periciatext}</h3>
       <a/>
       <input id="input_${periciatext}" type="text" style="outline: 0; box-shadow: 0 0 0 0; border: 0 none; margin: 0px" value="${pericianum}"> 
-      <input type="button" name="${periciatext}"id="delete_${periciatext}" style="outline: 0; box-shadow: 0 0 0 0; border: 0 none; margin-bottom: 20px; margin-top: 0px;"value="DELETE" onclick="removePericia(delete_${periciatext})">
+      <input type="button" name="${periciatext}"id="delete_${periciatext}" style="outline: 0; box-shadow: 0 0 0 0; border: 0 none; margin-bottom: 20px; margin-top: 0px;"value="DELETE" onclick="removePericia('${periciatext}')" >
       <br>
       </div>`)
       $('#listaAdd').append(newPericia)
@@ -571,8 +571,8 @@ function carregarParagrafo(){
 
 }
 
-function removePericia(nome_pericia=" "){
-  nome = String(nome_pericia.name)
+function removePericia(nome_pericia=""){
+  nome = String(nome_pericia)
   console.log(nome)
   localStorage.removeItem(`pericia${nome}`)
   document.location.reload()
