@@ -544,6 +544,7 @@ function carregarPericia(){
     }
   }
 }
+// isso é um comentário
 
 
 function salvarParagrafo(){
