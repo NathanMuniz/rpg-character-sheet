@@ -585,7 +585,3 @@ document.onchange = carregarPericia()
 document.onchange = salvarDados;
 
 
-
-
-
-
